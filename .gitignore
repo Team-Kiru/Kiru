@@ -1,0 +1,12 @@
+config.json
+node_modules
+.idea
+.package-lock.json
+yarn.lock
+data.json
+Lavalink.jar
+data.json
+yarn-error.log
+.scannerwork
+logs
+.jshintrc

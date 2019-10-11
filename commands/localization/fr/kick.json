@@ -1,0 +1,18 @@
+{
+"info": {
+"name": "Kick",
+"author": "Kio",
+"category": "Admin",
+"description": "Utilisez cette commande pour frapper les autres!",
+"syntax": "kick <@user> [@un autre utilisateur] (peut être utilisé en masse.)"
+},
+"cant_kick_others": "Vous n'êtes pas quelqu'un qui devrait frapper les autres! >~<",
+"cant_kick_self": "Je ne vous donne pas un coup de pied idiot!",
+"cant_kick_kiru": "Il n'est pas agréable de me donner des coups de pied!",
+"cant_kick_owner": "Vous ne pouvez pas botter le propriétaire de ce serveur!",
+"cant_kick_higher_than_kiru": "Je ne peux pas donner de coup de pied {username} car ils sont plus élevés que moi dans la hiérarchie.",
+"cant_kick_higher_than_user": "Je ne peux pas donner de coup de pied {username} car ils sont plus élevés que vous dans la hiérarchie.",
+"kickedmembers": "J'ai réussi à taper {amount} utilisateurs. C'est beaucoup... >~<",
+"kickedOne": "J'ai réussi à lancer {user}. Au revoir!",
+"kickedNone": "Je ne pouvais frapper personne. Yipes!"
+}

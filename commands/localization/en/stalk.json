@@ -1,0 +1,19 @@
+{
+	"info": {
+		"name": "Stalk",
+		"author": "Kio",
+		"category": "General",
+		"description": "Find out all about a user!",
+		"syntax": "stalk <@user>"
+	},
+	"title": "Here's what I know about {user}!",
+	"footer": "For {user}! <3",
+	"joined_discord": "They joined Discord on:",
+	"joined_server": "They joined the server on:",
+	"goes_by": "They go by:",
+	"roles": "They have the roles:",
+	"ID": "Their ID is:",
+	"avatar": "Their Avatar is:",
+	"avatarLink": "[Here!]({url})"
+
+}

@@ -1,0 +1,20 @@
+{
+	"aboutme": {
+		"name": "Discord Bot Name!"
+	},
+	"owners": ["Put an Owner ID here. (Not a Discord Tag.)"],
+	"channels": {
+		"genericLogs": "Generic logs, anyone? I _need_ an ID here.",
+		"guildReporter": "ID of the channel you want to share Guild joins!"
+	},
+
+	"prefix": "Prefix.",
+	"webServerPort" : "8000",
+	"token": "Discord token! o-o-",
+  "oAuthSecret": "I'm required if you want me to function right online. ^^;",
+	"domain": "Also for oAuth.",
+	"secure": "this is either the letter s, or null.",
+	"keys": [
+		"Cookie keys!"
+	]
+}

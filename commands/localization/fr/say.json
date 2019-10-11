@@ -1,0 +1,10 @@
+{
+	"info": {
+		"name": "Dit",
+		"category": "Amusant",
+		"author": "Kio",
+		"description": "Faites dire à Kiru quelque chose de drôle!",
+		"syntax": "dire <message>"
+	},
+	"no_responsibility": "Team Kiru ne prend pas la responsabilité de ce message!"
+}

@@ -1,0 +1,18 @@
+{
+	"info": {
+		"name": "Ban",
+		"author": "Kio",
+		"category": "Admin",
+		"description": "Utilise cette commande pour bannir les autres!",
+		"syntax": "ban <@utilisateur> [@autreUtilisateur] (Peut être utilisé en masse.)"
+	},
+	"cant_ban_others": "Tu n'es pas quelqu'un qui devrait bannir les autres! ><",
+	"cant_ban_self": "Je ne vais pas te bannir, Idiot!",
+	"cant_ban_kiru": "M'utiliser pour me bannir moi-même n'est pas sympa!",
+	"cant_ban_owner": "Tu ne peux pas bannir le propriétaire du serveur!",
+	"cant_ban_higher_than_kiru": "Je ne peux pas bannir {username} parce qu'ils sont plus haut que moi dans la hiérarchie.",
+	"cant_ban_higher_than_user": "Je ne peux pas bannir {username} parce qu'ils sont plus haut que toi dans la hiérarchie.",
+	"banedmembers": "J'ai réussi à bannir {amount} utilisateurs. Ça fait beaucoup... >~<",
+	"banedOne": "J'ai réussi à bannir {user}. Bye!",
+	"banedNone": "J'ai pas réussi à bannir qui que ce soit. Ouch!"
+}

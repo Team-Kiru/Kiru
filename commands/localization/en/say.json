@@ -1,0 +1,10 @@
+{
+	"info": {
+		"name": "Say",
+		"category": "Fun",
+		"author": "Kio",
+		"description": "Make Kiru say something funny!",
+		"syntax": "say <message>"
+	},
+	"no_responsibility": "Team Kiru doesn't take responsibility for this message!"
+}

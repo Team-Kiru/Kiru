@@ -1,0 +1,23 @@
+{
+	"info": {
+		"name": "A Propos",
+		"category": "General",
+		"author": "Team Kiru",
+		"description": "A Propos de Kiru!",
+		"syntax": "a propos"
+	},
+	"command": {
+		"aboutBot": "A Propos de {bot.name}!",
+		"translate": true,
+		"translator": "Traducteurs",
+		"translators": "CmdrRabbit",
+		"greetingFromLead": "Salut! C'est le Chef Developer de Kiru!",
+		"leadSpeaking": "On à travaillés très dur pour vous apporter ce nouveau Bot .\nJ'espère que vous l'aimerez autant que nous!",
+		"developers": "Developers",
+		"contentMakers": "Content-Makers (Parce qu'ils ont besoin d'amour aussi!)",
+		"version": "Qu'est ce qu'on utilise ?",
+		"versionText": "Discord.js v. 11.4.2\nNode.js     v.{version}\nKiru! On à notre propre repo.\nDebian ou Ubuntu. (Je me rappelle plus.)",
+		"specialThanks": "Un Merci Spécial à...",
+		"specialThanksUnder": "Toi, bien sûr!\nMerci d'utiliser {bot.name}.\nQue le bot le plus\nadorable soit le seul!"
+	}
+}

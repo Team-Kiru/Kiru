@@ -1,0 +1,18 @@
+{
+  "info" : {
+    "name": "Settingss",
+    "author": "Team Kiru",
+    "category": "Miscellanious",
+    "description": "Change the Server-specific settings!",
+    "syntax": "settings help"
+  },
+  "no_command_title": "Let's get you some settings!",
+  "no_command_description": "These settings are unique for your server!",
+  "footer_title": "For {user}! <3",
+  "prefix": "Prefix",
+  "prefix_content": "Use this subcommand to change my prefix. use 'revert' to use the original one.",
+  "revert": "The prefix has been reverted!",
+  "update": "Successfully updated!",
+  "cant_change_settings": "I can't let you modify my settings here. Maybe in your server!"
+
+}

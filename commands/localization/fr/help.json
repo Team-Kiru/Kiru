@@ -1,0 +1,15 @@
+{
+	"not_how_to_use": "Ce n'est pas la bonne façon d'utiliser {command}!",
+	"author": "Auteur",
+	"syntax": "Syntaxe",
+	"footer": "Pour {username}! <3",
+	"not_a_command": ":x: ce n'est pas une commande... :c",
+	"help_top": "Voici mon aide!",
+	"info":{
+		"name": "Aide",
+		"category": "Général",
+		"author": "Équipe Kiru",
+		"description": "ous aide bien sûr, quand vous en avez besoin, bien sûr!",
+		"syntax": "help [commande]"
+	}
+}
