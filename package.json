@@ -1,52 +1,35 @@
 {
-  "name": "kiru",
-  "version": "1.0.0",
-  "description": "Kiru. My Discord Bot. Written in Discord.JS",
-  "main": "bot.js",
-  "dependencies": {
-    "better-sqlite-pool": "https://github.com/eslachance/better-sqlite-pool.git",
-    "bufferutil": "^3.0.3",
-    "consolidate": "^0.15.1",
-    "discord.js": "^11.4.2",
-    "discord.js-lavalink": "^2.1.3",
-    "ejs": "^2.6.1",
-    "enmap": "^4.7.1",
-    "erlpack": "https://github.com/discordapp/erlpack.git",
-    "express": "^4.17.1",
-    "express-session": "^1.16.1",
-    "jimp": "^0.6.1",
-    "libsodium-wrappers": "^0.7.4",
-    "node-cron": "^2.0.3",
-    "node-fetch": "^2.3.0",
-    "node-json-config": "0.0.5",
-    "node-opus": "^0.2.7",
-    "passport": "^0.4.0",
-    "passport-discord": "^0.1.3",
-    "passport-http-bearer": "^1.0.1",
-    "passport-oauth2-refresh": "^1.1.0",
-    "roll": "^1.2.0",
-    "uws": "^9.14.0"
-  },
-  "devDependencies": {
-    "jest": "^24.9.0",
-    "standard": "^12.0.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Kio",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/KioTD/kiru.git"
-  },
-  "keywords": [
-    "discord-bot",
-    "javascript",
-    "discord.js"
-  ],
-  "bugs": {
-    "url": "https://gitlab.com/KioTD/kiru/issues"
-  },
-  "homepage": "https://gitlab.com/KioTD/kiru#readme"
+	"name": "kiru",
+	"version": "1.0.0",
+	"description": "Kiru. My Discord Bot. Written in Discord.JS",
+	"main": "index.js",
+	"dependencies": {
+		"discord.js": "^11.5.1",
+		"discord.js-lavalink": "^2.2.3",
+		"enmap": "^5.2.0",
+		"node-cron": "^2.0.3",
+		"node-json-config": "^0.0.5",
+		"roll": "^1.2.0"
+	},
+	"devDependencies": {
+		"standard": "^12.0.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Kio",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://gitlab.com/KioTD/kiru.git"
+	},
+	"keywords": [
+		"discord-bot",
+		"javascript",
+		"discord.js"
+	],
+	"bugs": {
+		"url": "https://github.com/Team-Kiru/kiru/issues"
+	},
+	"homepage": "https://kiru.fun/"
 }
