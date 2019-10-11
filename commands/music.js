@@ -8,7 +8,7 @@ exports.load = client => {
   if (fs.existsSync('./Lavalink.jar')) {
     const lthree = require('child_process').spawn('java', [
       '-jar',
-      'Lavalink.jar'
+      require('path').join(__dirname, '/../') + 'Lavalink.jar'
     ])
     lthree.stdout.on('data', data => {
       if (
@@ -29,9 +29,9 @@ exports.load = client => {
     var file = fs.createWriteStream('Lavalink.jar')
     require('https').get(
       'https://ci.fredboat.com/guestAuth/repository/download/Lavalink_Build/.lastSuccessful/Lavalink.jar',
-      function (response) {
+      function(response) {
         response.pipe(file)
-        file.on('finish', function () {
+        file.on('finish', function() {
           file.close()
           const childProcess = require('child_process').spawn('java', [
             '-jar',

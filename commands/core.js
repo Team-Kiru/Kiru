@@ -4,6 +4,49 @@
 
 exports = {
   settings: {
+    On_GuildMemberJoin: (client, member) => {
+      const welcomeBlock = client.data.get(
+        'serverSpecificSettings.' + member.guild.id + '.welcome'
+      )
+      if (welcomeBlock !== undefined) {
+        if (
+          welcomeBlock.channel !== undefined &&
+          welcomeBlock.message !== undefined
+        ) {
+          client.channels
+            .get(welcomeBlock.channel)
+            .send(
+              welcomeBlock.message.replace(
+                /{mention}/gm,
+                '<@' + member.id + '>'
+              )
+            )
+        }
+        if (welcomeBlock.role) {
+          // TODO: Just really need to add the role.
+        }
+      }
+    },
+    On_guildMemberRemove: (client, member) => {
+      const welcomeBlock = client.data.get(
+        'serverSpecificSettings.' + member.guild.id + '.goodbye'
+      )
+      if (welcomeBlock !== undefined) {
+        if (
+          welcomeBlock.channel !== undefined &&
+          welcomeBlock.message !== undefined
+        ) {
+          client.channels
+            .get(welcomeBlock.channel)
+            .send(
+              welcomeBlock.message.replace(
+                /{mention}/gm,
+                '@' + member.user.username + '#' + member.user.tag
+              )
+            )
+        }
+      }
+    },
     info: (client, message) => {
       return client.extraFunction.getLocalizedCommand(
         client,
@@ -289,18 +332,20 @@ exports = {
         .trim()
       if (command.length === 0) {
         let commandList = {}
-        Array.from(client.commands.keys()).forEach(function (key) {
+        Array.from(client.commands.keys()).forEach(function(key) {
           let info = client.commands.get(key).info(client, message)
           //      console.log(info + ' - ' + key) If it's undefined
           if (info !== undefined) {
             if (info.hidden === undefined) {
-              if (commandList[info.category] === undefined) { commandList[info.category] = [] }
+              if (commandList[info.category] === undefined) {
+                commandList[info.category] = []
+              }
               commandList[info.category].push(key)
             }
           }
         })
 
-        Object.keys(commandList).forEach(function (key) {
+        Object.keys(commandList).forEach(function(key) {
           commandList[key] = commandList[key].sort()
         })
         let embed = {
@@ -313,9 +358,9 @@ exports = {
           },
           fields: []
         }
-        Object.keys(commandList).forEach(function (key) {
+        Object.keys(commandList).forEach(function(key) {
           let properDisplay = ''
-          commandList[key].forEach(function (item) {
+          commandList[key].forEach(function(item) {
             properDisplay += '`` ' + item + '``, '
           })
           properDisplay = properDisplay.substring(0, properDisplay.length - 2)

@@ -1,7 +1,8 @@
 module.exports = (client, guild) => {
-  client.functions.guild.join.array().forEach(key => {
-    client.functions.guild.join.get(key).create_guild()
+  client.function['guildCreate'].forEach(fun => {
+    fun(client, guild)
   })
+
   console.log(guild)
   const embed = {
     title: 'New Server!',

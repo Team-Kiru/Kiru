@@ -34,10 +34,6 @@ exports.roll = {
 }
 
 exports.mimic = {
-  load: client => {
-    client.functions.message.set('mimic_message', message)
-  },
-
   info: () => {
     return {
       name: 'Mimic', // The name of the command.
@@ -300,69 +296,73 @@ exports.mimic = {
         message.channel.send(content)
         break
     }
-  }
-}
-/* I'm going to admit, I have no idea what I'm doing in regards to Lazy moduling.
-
-let message = (client, message) => {
-  const Char = require('node-json-config')
-  const chars = new Char('./config/characters.json')
-  if (
-    message.guild !== undefined &&
-    chars.get(message.guild.id + '.' + message.author.id) !== undefined
-  ) {
-    let i
-    for (
-      i = 0;
-      i <
-      Object.keys(chars.get(message.guild.id + '.' + message.author.id)).length;
-      i++
+  },
+  On_message: (client, message) => {
+    const Char = require('node-json-config')
+    const chars = new Char('./config/characters.json')
+    if (
+      message.guild !== undefined &&
+      chars.get(message.guild.id + '.' + message.author.id) !== undefined
     ) {
-      if (
-        message.content.startsWith(
-          Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]
-        )
+      let i
+      for (
+        i = 0;
+        i <
+        Object.keys(chars.get(message.guild.id + '.' + message.author.id))
+          .length;
+        i++
       ) {
-        message.delete().then(() => {
-          message.channel
-            .createWebhook(
-              chars.get(
-                message.guild.id +
-                  '.' +
-                  message.author.id +
-                  '.' +
-                  Object.keys(
-                    chars.get(message.guild.id + '.' + message.author.id)
-                  )[i]
-              ).username,
-              chars.get(
-                message.guild.id +
-                  '.' +
-                  message.author.id +
-                  '.' +
-                  Object.keys(
-                    chars.get(message.guild.id + '.' + message.author.id)
-                  )[i]
-              ).avatar_url
-            )
-            .then(wh => {
-              wh.send(
-                message.content.replace(
-                  Object.keys(
-                    chars.get(message.guild.id + '.' + message.author.id)
-                  )[i],
-                  ''
-                )
-              ).then(() => {
-                wh.delete()
+        if (
+          message.content.startsWith(
+            Object.keys(chars.get(message.guild.id + '.' + message.author.id))[
+              i
+            ]
+          )
+        ) {
+          message.delete().then(() => {
+            message.channel
+              .createWebhook(
+                chars.get(
+                  message.guild.id +
+                    '.' +
+                    message.author.id +
+                    '.' +
+                    Object.keys(
+                      chars.get(message.guild.id + '.' + message.author.id)
+                    )[i]
+                ).username,
+                chars.get(
+                  message.guild.id +
+                    '.' +
+                    message.author.id +
+                    '.' +
+                    Object.keys(
+                      chars.get(message.guild.id + '.' + message.author.id)
+                    )[i]
+                ).avatar_url
+              )
+              .then(wh => {
+                wh.send(
+                  message.content.replace(
+                    Object.keys(
+                      chars.get(message.guild.id + '.' + message.author.id)
+                    )[i],
+                    ''
+                  )
+                ).then(() => {
+                  wh.delete()
+                })
               })
-            })
-        })
-        break
-      } else {
-        continue
+          })
+          break
+        } else {
+          continue
+        }
       }
     }
   }
 }
+/* I'm going to admit, I have no idea what I'm doing in regards to Lazy moduling.
+
+let
 */

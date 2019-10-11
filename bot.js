@@ -5,19 +5,6 @@ const bannedEvents = ['webserver.js', 'api.js', 'extrafunctions.js']
 const fs = require('fs')
 const path = require('path')
 
-client.user.setPresence({
-	game: {
-		type: 'LISTENING',
-		name: 'the community!'
-	},
-	status: 'online'
-})
-
-const msg = message => {
-	client.channels.get(client.params.get('channels.genericLogs')).send(message)
-	console.log(message)
-}
-
 process.on('uncaughtException', err => {
 	console.log("There's an issue in one of your modules. " + err.stack)
 })
@@ -29,6 +16,10 @@ client.extraFunction = require(path.join(
 	__dirname,
 	'./events/extrafunctions.js'
 ))
+client.log = message => {
+	client.channels.get(client.params.get('channels.genericLogs')).send(message)
+	console.log(message)
+}
 
 fs.readdir('./events/', (err, files) => {
 	if (err) return console.error(err.stack)
@@ -52,6 +43,7 @@ fs.readdir('./events/', (err, files) => {
 
 const addCommands = () => {
 	client.commands = new Enmap()
+	client.function = {}
 	fs.readdir(path.join(__dirname, './commands/'), (err, files) => {
 		if (err) return console.error(err.stack)
 		files.forEach(file => {
@@ -74,9 +66,21 @@ const addCommands = () => {
 					client.commands.set(commandName, props)
 				} else {
 					for (let i = 0; i !== Object.keys(props).length; i++) {
-						if (props[Object.keys(props)[i]].load !== undefined) {
-							props[Object.keys(props)[i]].load(client)
-						}
+						Object.keys(props[Object.keys(props)[i]]).forEach(
+							pluginName => {
+								if (pluginName === 'load') {
+									props[Object.keys(props)[i]].load(client)
+								} else if (pluginName.startsWith('On_')) {
+									plugin = pluginName.replace('On_', '')
+									if (client.function[plugin] === undefined) {
+										client.function[plugin] = []
+									}
+									client.function[plugin].push(
+										props[Object.keys(props)[i]][pluginName]
+									)
+								}
+							}
+						)
 						client.commands.set(
 							Object.keys(props)[i],
 							props[Object.keys(props)[i]]
@@ -99,7 +103,14 @@ client.reloadAll = () => {
 
 client.on('ready', () => {
 	addCommands()
-	client.log = msg
+	client.user.setPresence({
+		game: {
+			type: 'LISTENING',
+			name: 'the community!'
+		},
+		status: 'online'
+	})
+
 	client.log('===================================================')
 	client.log(
 		`Logged in as ${client.user.tag} on ` + new Date().toUTCString() + '!'
