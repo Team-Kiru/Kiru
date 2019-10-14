@@ -10,4 +10,4 @@ yarn-error.log
 .scannerwork
 logs
 .jshintrc
-config/characters.json
+characters.json
