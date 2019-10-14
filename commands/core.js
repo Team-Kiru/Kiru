@@ -3,7 +3,7 @@
 // If edited, Team Kiru will not support you!
 
 exports.settings = {
-  On_GuildMemberJoin: (client, member) => {
+  On_guildMemberJoin: (client, member) => {
     const welcomeBlock = client.data.get(
       'serverSpecificSettings.' + member.guild.id + '.welcome'
     )
