@@ -62,11 +62,11 @@ exports.mimic = {
           // Check Prefix to see if it exists with the user, or if it is the globally assigned prefix.
           if (
             chars.get(
-              message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64')
+              message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('Base64')
             ) !== undefined
           ) {
             message.reply(
-              'I already have ' + chars.get(message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64') + '.username') + ' being mimicked with that prefix!'
+              'I already have ' + chars.get(message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('Base64') + '.username') + ' being mimicked with that prefix!'
             )
             return
           }
@@ -83,7 +83,7 @@ exports.mimic = {
 
           // Save!~
           chars.put(
-            message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64'), { username: argument[2].toString('base64'), avatar_url: argument[3].toString('base64') }
+            message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('Base64'), { username: Buffer.from(argument[2]).toString('Base64'), avatar_url: Buffer.from(argument[3]).toString('Base64') }
           )
           chars.save()
           message.reply(
@@ -118,7 +118,7 @@ exports.mimic = {
         if (
           !Object.keys(
             chars.get(message.guild.id + '.' + message.author.id)
-          ).includes(argument[1])
+          ).includes(Buffer.from(argument[1]).toString('base64'))
         ) {
           message.reply("I don't know anyone by that prefix!")
           return
@@ -140,14 +140,14 @@ exports.mimic = {
               message.reply("Sorry, that's my prefix. :c")
               return
             }
-            chars.put(message.guild.id + '.' + message.author.id + '.' + argument[3], message.guild.id + '.' + message.author.id + '.' + argument[1])
-            chars.put(message.guild.id + '.' + message.author.id + '.' + argument[1], undefined)
+            chars.put(message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[3]).toString('base64'), message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('base64'))
+            chars.put(message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('base64'), undefined)
             chars.save()
             break
 
           case 'name':
             chars.put(
-              message.guild.id + '.' + message.author.id + '.' + argument[1] + '.username'
+              message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('base64') + '.username', Buffer.from(argument[3]).toString('base64')
             )
             /*
                         TODO:
@@ -165,7 +165,7 @@ exports.mimic = {
               return
             }
             chars.put(
-              message.guild.id + '.' + message.author.id + '.' + argument[1] + '.avatar_url', argument[3]
+              message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('base64') + '.avatar_url', argument[3]
             )
             chars.save()
             message.reply('Saved!')
@@ -212,10 +212,12 @@ exports.mimic = {
           message.reply("You don't have any characters that I mimic!")
           return
         }
-        let content = null; let i
+        let content = ''; let i
         for (i = 0; i < Object.keys(chars.get(message.guild.id + '.' + message.author.id)).length; i++) {
           content +=
-            Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '   ---   ' + chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.username') + '   ---   <' + chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.avatar_url') + '>\n'
+            Buffer.from(Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i], 'Base64').toString() + '   ---   ' +
+            Buffer.from(chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.username'), 'Base64').toString() + '   ---   <' +
+            Buffer.from(chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.avatar_url'), 'Base64').toString() + '>\n'
         }
         message.channel.send(content)
         break
@@ -229,20 +231,18 @@ exports.mimic = {
     ) {
       let i
       for (i = 0; i < Object.keys(chars.get(message.guild.id + '.' + message.author.id)).length; i++) {
-        if (
-          message.content.startsWith(
-            Buffer.from(Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]), 'Base64').toString()) {
+        if (message.content.startsWith(Buffer.from(Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i], 'Base64').toString())) {
           message.delete().then(() => {
             message.channel
               .createWebhook(
-                chars.get(message.guild.id + '.' + message.author.id + '.' +
-                    Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).username,
-                chars.get(message.guild.id + '.' + message.author.id + '.' +
-                    Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).avatar_url
+                Buffer.from(chars.get(message.guild.id + '.' + message.author.id + '.' +
+                    Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).username, 'Base64').toString(),
+                Buffer.from(chars.get(message.guild.id + '.' + message.author.id + '.' +
+                    Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).avatar_url, 'Base64').toString()
               )
               .then(wh => {
                 wh.send(
-                  message.content.replace(Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i], '')
+                  message.content.replace(Buffer.from(Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i], 'base64').toString(), '')
                 ).then(() => {
                   wh.delete()
                 })

@@ -1,12 +1,12 @@
 module.exports = (client, message) => {
   if (message.author.bot) return
-  client.function.message.forEach(fun => {
-    fun(client, message)
-  })
+  if (client.function.message !== undefined) {
+    client.function.message.forEach(fun => {
+      fun(client, message)
+    })
+  }
 
-  if (
-    !message.content.startsWith(client.extraFunction.getPrefix(client, message))
-  ) {
+  if (!message.content.startsWith(client.extraFunction.getPrefix(client, message))) {
     return
   }
   const command = message.content
