@@ -1,5 +1,5 @@
 module.exports = (client, guild) => {
-  client.function['guildCreate'].forEach(fun => {
+if (client.function['guildCreate'] !== undefined) client.function['guildCreate'].forEach(fun => {
     fun(client, guild)
   })
 
