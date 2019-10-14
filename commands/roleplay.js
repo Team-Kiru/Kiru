@@ -53,11 +53,7 @@ exports.mimic = {
     switch (argument[0]) {
       case 'help':
         message.channel.send({
-          embed: client.extraFunction.getLocalizedCommand(
-            client,
-            message,
-            'mimic'
-          ).help
+          embed: client.extraFunction.getLocalizedCommand(client, message, 'mimic').help
         })
         break
 
@@ -70,16 +66,9 @@ exports.mimic = {
             ) !== undefined
           ) {
             message.reply(
-              'I already have ' +
-                chars.get(
-                  message.guild.id +
-                    '.' +
-                    message.author.id +
-                    '.' +
-                    argument[1] +
-                    '.username'
-                ) +
-                ' being mimicked with that prefix!'
+              'I already have ' + chars.get(
+                message.guild.id + '.' + message.author.id + '.' + argument[1] + '.username'
+              ) + ' being mimicked with that prefix!'
             )
             return
           }
@@ -96,8 +85,7 @@ exports.mimic = {
 
           // Save!~
           chars.put(
-            message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64'),
-            { username: argument[2].toString('base64'), avatar_url: argument[3].toString('base64') }
+            message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64'), { username: argument[2].toString('base64'), avatar_url: argument[3].toString('base64') }
           )
           chars.save()
           message.reply(
@@ -124,9 +112,7 @@ exports.mimic = {
         if (message.length === 2) {
           message.channel.send({
             embed: client.extraFunction.getLocalizedCommand(
-              client,
-              message,
-              'mimic'
+              client, message, 'mimic'
             ).edit.notspec
           })
           return
@@ -148,42 +134,22 @@ exports.mimic = {
               ) !== undefined
             ) {
               message.reply(
-                'I already have ' +
-                  chars.get(
-                    message.guild.id +
-                      '.' +
-                      message.author.id +
-                      '.' +
-                      argument[3] +
-                      '.username'
-                  ) +
-                  ' being mimicked with that prefix!'
+                'I already have ' + chars.get(message.guild.id + '.' + message.author.id + '.' + argument[3] + '.username') + ' being mimicked with that prefix!'
               )
               return
             }
-            if (argument[3] === conf.get('prefix')) {
+            if (argument[3] === client.params.get('prefix')) {
               message.reply("Sorry, that's my prefix. :c")
               return
             }
-            chars.put(
-              message.guild.id + '.' + message.author.id + '.' + argument[3],
-              message.guild.id + '.' + message.author.id + '.' + argument[1]
-            )
-            chars.put(
-              message.guild.id + '.' + message.author.id + '.' + argument[1],
-              undefined
-            )
+            chars.put(message.guild.id + '.' + message.author.id + '.' + argument[3], message.guild.id + '.' + message.author.id + '.' + argument[1])
+            chars.put(message.guild.id + '.' + message.author.id + '.' + argument[1], undefined)
             chars.save()
             break
 
           case 'name':
             chars.put(
-              message.guild.id +
-                '.' +
-                message.author.id +
-                '.' +
-                argument[1] +
-                '.username'
+              message.guild.id + '.' + message.author.id + '.' + argument[1] + '.username'
             )
             /*
                         TODO:
@@ -201,13 +167,7 @@ exports.mimic = {
               return
             }
             chars.put(
-              message.guild.id +
-                '.' +
-                message.author.id +
-                '.' +
-                argument[1] +
-                '.avatar_url',
-              argument[3]
+              message.guild.id + '.' + message.author.id + '.' + argument[1] + '.avatar_url', argument[3]
             )
             chars.save()
             message.reply('Saved!')
@@ -217,9 +177,7 @@ exports.mimic = {
           default:
             message.channel.send({
               embed: client.extraFunction.getLocalizedCommand(
-                client,
-                message,
-                'mimic'
+                client, message, 'mimic'
               ).edit.invalid
             })
             break
@@ -238,8 +196,7 @@ exports.mimic = {
           }
           // Annnnd Delete.
           chars.put(
-            message.guild.id + '.' + message.author.id + '.' + argument[1],
-            undefined
+            message.guild.id + '.' + message.author.id + '.' + argument[1], undefined
           )
           chars.save()
           message.reply(
@@ -260,11 +217,7 @@ exports.mimic = {
         let content = null; let i
         for (i = 0; i < Object.keys(chars.get(message.guild.id + '.' + message.author.id)).length; i++) {
           content +=
-            Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] +
-            '   ---   ' +
-            chars.get(message.guild.id + '.' + message.author.id + '.' +
-                Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.username') + '   ---   <' +
-            chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.avatar_url') + '>\n'
+            Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '   ---   ' + chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.username') + '   ---   <' + chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i] + '.avatar_url') + '>\n'
         }
         message.channel.send(content)
         break
@@ -274,7 +227,7 @@ exports.mimic = {
     const Char = require('node-json-config')
     const chars = new Char('./config/characters.json')
     if (message.guild === undefined) return
-      if (chars.get(message.guild.id + '.' + message.author.id) !== undefined
+    if (chars.get(message.guild.id + '.' + message.author.id) !== undefined
     ) {
       let i
       for (i = 0; i < Object.keys(chars.get(message.guild.id + '.' + message.author.id)).length; i++) {
@@ -284,8 +237,10 @@ exports.mimic = {
           message.delete().then(() => {
             message.channel
               .createWebhook(
-                chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).username,
-                chars.get(message.guild.id + '.' + message.author.id + '.' + Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).avatar_url
+                chars.get(message.guild.id + '.' + message.author.id + '.' +
+                    Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).username,
+                chars.get(message.guild.id + '.' + message.author.id + '.' +
+                    Object.keys(chars.get(message.guild.id + '.' + message.author.id))[i]).avatar_url
               )
               .then(wh => {
                 wh.send(
@@ -303,7 +258,3 @@ exports.mimic = {
     }
   }
 }
-/* I'm going to admit, I have no idea what I'm doing in regards to Lazy moduling.
-
-let
-*/
