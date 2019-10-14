@@ -273,9 +273,8 @@ exports.mimic = {
   On_message: (client, message) => {
     const Char = require('node-json-config')
     const chars = new Char('./config/characters.json')
-    if (
-      message.guild !== undefined &&
-      chars.get(message.guild.id + '.' + message.author.id) !== undefined
+    if (message.guild === undefined) return
+      if (chars.get(message.guild.id + '.' + message.author.id) !== undefined
     ) {
       let i
       for (i = 0; i < Object.keys(chars.get(message.guild.id + '.' + message.author.id)).length; i++) {
