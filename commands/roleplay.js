@@ -66,9 +66,7 @@ exports.mimic = {
             ) !== undefined
           ) {
             message.reply(
-              'I already have ' + chars.get(
-                message.guild.id + '.' + message.author.id + '.' + argument[1] + '.username'
-              ) + ' being mimicked with that prefix!'
+              'I already have ' + chars.get(message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64') + '.username') + ' being mimicked with that prefix!'
             )
             return
           }
