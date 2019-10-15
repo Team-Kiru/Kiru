@@ -68,9 +68,9 @@ const addCommands = () => {
           for (let i = 0; i !== Object.keys(props).length; i++) {
             Object.keys(props[Object.keys(props)[i]]).forEach(pluginName => {
               if (pluginName === 'load') {
-                props[Object.keys(props[i])].load(client)
+                props[Object.keys(props)[i]].load(client)
               } else if (pluginName.startsWith('On_')) {
-                let plugin = pluginName.replace('On_', '')
+                const plugin = pluginName.replace('On_', '')
                 if (client.function[plugin] === undefined) {
                   client.function[plugin] = []
                 }
