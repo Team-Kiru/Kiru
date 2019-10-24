@@ -165,7 +165,7 @@ exports.mimic = {
               return
             }
             chars.put(
-              message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('base64') + '.avatar_url', argument[3]
+              message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('base64') + '.avatar_url', argument[3].toString('base64')
             )
             chars.save()
             message.reply('Saved!')
@@ -191,15 +191,16 @@ exports.mimic = {
             ).includes(argument[1])
           ) {
             message.reply("I don't know anyone by that prefix!")
-          }
+          } else {
           // Annnnd Delete.
           chars.put(
-            message.guild.id + '.' + message.author.id + '.' + argument[1], undefined
+            message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64'), undefined
           )
           chars.save()
           message.reply(
             'Up. I already forgot about... uhm.. who was it? I forgot.'
           )
+	 }
         } else message.reply('I need the prefix of who you want me to forget!')
 
         break
@@ -226,7 +227,7 @@ exports.mimic = {
   On_message: (client, message) => {
     const Char = require('node-json-config')
     const chars = new Char('./config/characters.json')
-    if (message.guild === undefined) return
+    if (message.guild === undefined || message.guild.id === undefined || message.author.id === undefined || message.author.id === undefined) return
     if (chars.get(message.guild.id + '.' + message.author.id) !== undefined
     ) {
       let i
