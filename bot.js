@@ -44,7 +44,7 @@ fs.readdir('./events/', (err, files) => {
 const addCommands = () => {
   client.commands = new Enmap()
   client.function = {}
-  fs.readdir(path.join(__dirname, './commands/'), (err, files) => {
+  fs.readdir(path.join(__dirname, './modules/'), (err, files) => {
     if (err) return console.error(err.stack)
     files.forEach(file => {
       if (!file.endsWith('.js')) return
