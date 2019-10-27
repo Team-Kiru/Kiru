@@ -51,7 +51,7 @@ const addCommands = () => {
       let quip = false
       let props = null
       try {
-        props = require(path.join(__dirname, `./commands/${file}`))
+        props = require(path.join(__dirname, `./modules/${file}`))
       } catch (e) {
         console.error(
           `Cannot load plugin ${file} - See stack trace. Ignoring plugin.\n` +

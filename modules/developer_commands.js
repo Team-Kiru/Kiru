@@ -5,7 +5,7 @@ exports.eval = {
   run: (client, message) => {
     if (client.params.get('owners').includes(message.author.id)) {
       try {
-        let val = eval(message.content.replace(client.extraFunction.getPrefix(client, message) + 'eval ', ''))
+        let val = new Function(client, message, message.content.replace(client.extraFunction.getPrefix(client, message) + 'eval ', ''))
         if (val !== undefined) message.reply(val)
       } catch (error) { message.reply(error) }
     }
