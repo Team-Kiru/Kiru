@@ -6,11 +6,11 @@ exports.getLocalizedCommand = (client, message, command) => {
     if (getSpecificLanguage === undefined) { getSpecificLanguage = 'en' }
   }
   try {
-    return JSON.parse(fs.readFileSync('./commands/localization/' + getSpecificLanguage + '/' + command + '.json', 'utf8'))
+    return JSON.parse(fs.readFileSync('./modules/localization/' + getSpecificLanguage + '/' + command + '.json', 'utf8'))
   } catch (error) {
     if (error.code === 'ENOENT') {
       client.log("Can't find proper data for lang " + getSpecificLanguage + ' for command ' + command + '.')
-      return JSON.parse(fs.readFileSync('./commands/localization/en/' + command + '.json', 'utf8'))
+      return JSON.parse(fs.readFileSync('./modules/localization/en/' + command + '.json', 'utf8'))
     }
   }
 }
