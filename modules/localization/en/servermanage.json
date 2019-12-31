@@ -1,0 +1,66 @@
+{
+	"stalk": {
+		"info": {
+			"name": "Stalk",
+			"author": "Kio",
+			"category": "General",
+			"description": "Find out all about a user!",
+			"syntax": "stalk <@user>"
+		},
+		"title": "Here's what I know about {user}!",
+		"footer": "For {user}! <3",
+		"joined_discord": "They joined Discord on:",
+		"joined_server": "They joined the server on:",
+		"goes_by": "They go by:",
+		"roles": "They have the roles:",
+		"ID": "Their ID is:",
+		"avatar": "Their Avatar is:",
+		"avatarLink": "[Here!]({url})"
+	},
+	"ban": {
+		"info": {
+			"name": "Ban",
+			"author": "Kio",
+			"category": "Admin",
+			"description": "Use this command to ban others!",
+			"syntax": "ban <@user> [@anotherUser] (Can be used en masse.)"
+		},
+		"cant_ban_others": "You're not someone who should be banning others! ><",
+		"cant_ban_self": "I'm not banning you, silly!",
+		"cant_ban_kiru": "Using me to ban myself is not nice!",
+		"cant_ban_owner": "You can't ban the owner of this server!",
+		"cant_ban_higher_than_kiru": "I can't ban {username} because they're higher than me in the hierarchy.",
+		"cant_ban_higher_than_user": "I can't ban {username} because they're higher than you in the hierarchy.",
+		"banedmembers": "I succefully banned {amount} users. That's a lot... >~<",
+		"banedOne": "I succefully banned {user}. Bye!",
+		"banedNone": "I couldn't ban anyone. Yipes!"
+	},
+	"kick": {
+		"info": {
+			"name": "Kick",
+			"author": "Kio",
+			"category": "Admin",
+			"description": "Use this command to kick others!",
+			"syntax": "kick <@user> [@anotherUser] (Can be used en masse.)"
+		},
+		"cant_kick_others": "You're not someone who should be kicking others! ><",
+		"cant_kick_self": "I'm not kicking you, silly!",
+		"cant_kick_kiru": "Using me to kick myself is not nice!",
+		"cant_kick_owner": "You can't kick the owner of this server!",
+		"cant_kick_higher_than_kiru": "I can't kick {username} because they're higher than me in the hierarchy.",
+		"cant_kick_higher_than_user": "I can't kick {username} because they're higher than you in the hierarchy.",
+		"kickedmembers": "I succefully kicked {amount} users. That's a lot... >~<",
+		"kickedOne": "I succefully kicked {user}. Bye!",
+		"kickedNone": "I couldn't kick anyone. Yipes!"
+	},
+	"say": {
+		"info": {
+			"name": "Say",
+			"category": "Fun",
+			"author": "Kio",
+			"description": "Make Kiru say something funny!",
+			"syntax": "say <message>"
+		},
+		"no_responsibility": "Team Kiru doesn't take responsibility for this message!"
+	}
+}

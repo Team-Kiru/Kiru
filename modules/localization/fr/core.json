@@ -1,0 +1,68 @@
+{
+	"about": {
+		"info": {
+			"name": "A Propos",
+			"category": "General",
+			"author": "Team Kiru",
+			"description": "A Propos de Kiru!",
+			"syntax": "a propos"
+		},
+		"command": {
+			"aboutBot": "A Propos de {bot.name}!",
+			"translate": true,
+			"translator": "Traducteurs",
+			"translators": "CmdrRabbit",
+			"greetingFromLead": "Salut! C'est le Chef Developer de Kiru!",
+			"leadSpeaking": "On à travaillés très dur pour vous apporter ce nouveau Bot .\nJ'espère que vous l'aimerez autant que nous!",
+			"developers": "Developers",
+			"contentMakers": "Content-Makers (Parce qu'ils ont besoin d'amour aussi!)",
+			"version": "Qu'est ce qu'on utilise ?",
+			"versionText": "Discord.js v. 11.4.2\nNode.js     v.{version}\nKiru! On à notre propre repo.\nDebian ou Ubuntu. (Je me rappelle plus.)",
+			"specialThanks": "Un Merci Spécial à...",
+			"specialThanksUnder": "Toi, bien sûr!\nMerci d'utiliser {bot.name}.\nQue le bot le plus\nadorable soit le seul!"
+		}
+	},
+	"help": {
+		"not_how_to_use": "Ce n'est pas la bonne façon d'utiliser {command}!",
+		"author": "Auteur",
+		"syntax": "Syntaxe",
+		"footer": "Pour {username}! <3",
+		"not_a_command": ":x: ce n'est pas une commande... :c",
+		"help_top": "Voici mon aide!",
+		"info":{
+			"name": "Aide",
+			"category": "Général",
+			"author": "Équipe Kiru",
+			"description": "ous aide bien sûr, quand vous en avez besoin, bien sûr!",
+			"syntax": "help [commande]"
+		}
+	},
+	"ping": {
+		"info": {
+			"name": "Ping",
+			"author": "Kio",
+			"category": "Divers",
+			"description": "Ping! Obtenez une estimation approximative de la livraison du message. Pong.",
+			"syntax": "ping"
+		},
+		"retrieve_ping": "Vous gagnez un temps de ping ...",
+		"time": "Pong! \nTemps pris:"
+	},
+	"settings": {
+	  "info" : {
+	    "name": "Réglages",
+	    "author": "Team Kiru",
+	    "category": "Divers",
+	    "description": "Modifiez les paramètres spécifiques au serveur!",
+	    "syntax": "aide aux réglages"
+	  },
+	  "no_command_title": "Réglons-nous!",
+	  "no_command_description": "Ces paramètres sont uniques pour votre serveur!",
+	  "footer_title": "Pour {username}! <3",
+	  "prefix": "Prefix",
+	  "prefix_content": "Utilisez cette sous-commande pour changer mon préfixe. Utilisez 'revert' pour utiliser celui d'origine.",
+	  "revert": "Le préfixe a été inversé!",
+	  "update": "Mise à jour avec succès!",
+	  "cant_change_settings": "Je ne peux pas vous laisser modifier mes paramètres ici. Peut-être sur votre serveur!"
+	}
+}

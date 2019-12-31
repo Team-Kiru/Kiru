@@ -1,48 +1,27 @@
-const checkPhoto = photo => {
-  return (
-    photo === undefined ||
-    (!photo.startsWith('http://') &&
-      !photo.startsWith('https://') &&
-      ['.png', '.jpg', '.bmp'].includes(photo))
-  )
-}
+const checkPhoto = photo => (photo === undefined || (!photo.startsWith('http://') && !photo.startsWith('https://') && ['.png', '.jpg', '.bmp'].includes(photo)))
 
 exports.roll = {
-  info: () => {
-    return {
-      name: 'Roll', // The name of the command.
-      author: 'Kio', // Who wrote this? Put "Team Kiru", if you want to remain Anonymous.
-      category: 'Fun', // What category should Kiru put this command under?
-      description: 'Roll a [d]!', // What is the focus of this command?
-      syntax:
-        'roll\n#d - number of dice\nd# - highest face (can also be %)\nb# - highest number(s) (optional)\nexample - d6, 4d8b2, 5d20+4, 2d20+d6'
-    }
-  },
+  info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'roleplay').roll.info,
   run: (client, message) => {
-    const Roll = require('roll')
-    const dice = new Roll()
-    const diceRoll = message.content.replace(
-      client.extraFunction.getPrefix(client, message) + 'roll ',
-      ''
-    )
-    if (!dice.validate(diceRoll)) {
-      message.reply('Please use a proper syntax, like 1d20, or 1d6+5...')
-    } else {
-      message.reply('you got a ' + dice.roll(diceRoll).result + '!')
-    }
+    const diceRoll = message.content.replace(client.extraFunction.getPrefix(client, message) + 'roll ', '')
+  Parsed = diceRoll.trim().split("d")
+  let newarray = [], total = [], totalnum = 0
+  Parsed.forEach(itm => newarray.push(Number(itm.trim())))
+  if (newarray[0] === 0 ) newarray[0] = 1
+  if (newarray[0] >= 101) {message.reply("Don't be mean to me!"); return false;}
+  else if (newarray[1] >= 1001) {message.reply("Don't be mean to me!"); return false;}
+  for ( i = 0; i < newarray[0]; i++) {
+    q = Math.floor( Math.random() * newarray[1] ) + 1
+    if (newarray[0] !== 1) total.push(q)
+    totalnum += q
+  }
+  if (newarray[0] === 1) message.channel.send("**Your Total** " + totalnum) 
+  else message.channel.send("**Your Total:** "+totalnum+"\nYou got the following numbers,\n"+JSON.stringify(total))
   }
 }
 
 exports.mimic = {
-  info: () => {
-    return {
-      name: 'Mimic', // The name of the command.
-      author: 'Kio', // Who wrote this? Put "Team Kiru", if you want to remain Anonymous.
-      category: 'Fun', // What category should Kiru put this command under?
-      description: 'Let me play as a mimic!', // What is the focus of this command?
-      syntax: 'See inside the command.'
-    }
-  },
+  info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'roleplay').mimic.info,
   run: (client, message) => {
     const ConfGrab = require('node-json-config')
     const chars = new ConfGrab('./config/characters.json')
@@ -52,7 +31,7 @@ exports.mimic = {
       .split(' ')
     switch (argument[0]) {
       case 'help':
-        message.channel.send({ embed: client.extraFunction.getLocalizedCommand(client, message, 'mimic').help })
+        message.channel.send({ embed: client.extraFunction.getLocalizedCommand(client, message, 'roleplay').mimic.help })
         break
 
       case 'create':
@@ -89,7 +68,7 @@ exports.mimic = {
           return
         }
         if (message.length === 2) {
-          message.channel.send({ embed: client.extraFunction.getLocalizedCommand(client, message, 'mimic').edit.notspec })
+          message.channel.send({ embed: client.extraFunction.getLocalizedCommand(client, message, 'roleplay').mimic.edit.notspec })
           return
         }
         if (

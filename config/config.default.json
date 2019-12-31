@@ -10,11 +10,5 @@
 
 	"prefix": "Prefix.",
 	"webServerPort" : "8000",
-	"token": "Discord token! o-o-",
-  "oAuthSecret": "I'm required if you want me to function right online. ^^;",
-	"domain": "Also for oAuth.",
-	"secure": "this is either the letter s, or null.",
-	"keys": [
-		"Cookie keys!"
-	]
+	"token": "Discord token! o-o-"
 }

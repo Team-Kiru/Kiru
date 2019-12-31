@@ -46,6 +46,6 @@ Kiru should be running!
 ## Acknowledgements
 
 The following software is used within our project:
-[Lavalink](https://github.com/Frederikam/Lavalink/), [Discord.js](https://discord.js.org/), [Node-json-config](https://github.com/Takayoshi-Aoyagi/node-json-config), [Enmap](https://github.com/eslachance/enmap), [Roll](https://github.com/troygoode/node-roll)
+[Lavalink](https://github.com/Frederikam/Lavalink/), [Discord.js](https://discord.js.org/), [Node-json-config](https://github.com/Takayoshi-Aoyagi/node-json-config), [Enmap](https://github.com/eslachance/enmap)
 
 I'll try my hardest to shorten this down and remove as many dependancies as possible! (◕⌂◕⊃⊃)T

@@ -1,14 +1,10 @@
 exports.stalk = {
-  info: (client, message) => {
-    return client.extraFunction.getLocalizedCommand(client, message, 'stalk').info
-  },
+  info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'servermanage').stalk.info,
   run: (client, message) => {
-    let local = client.extraFunction.getLocalizedCommand(client, message, 'stalk' )
-    if (message.mentions.members.array().length !== 1) {
-      client.commands.get('help').command(client, message, 'stalk')
-    } else {
-      let member = message.mentions.members.array()[0]
-      let RoleList = null
+    let local = client.extraFunction.getLocalizedCommand(client, message, 'servermanage' ).stalk
+    if (message.mentions.members.array().length !== 1) client.commands.get('help').command(client, message, 'stalk')
+    else {
+      let member = message.mentions.members.array()[0], RoleList = null
       member.roles.array().forEach(role => {
         if (RoleList === null) RoleList = '<@&' + role.id + '>'
         else RoleList += ', <@&' + role.id + '>'
@@ -59,11 +55,9 @@ exports.stalk = {
 }
 
 exports.ban = {
-  info: (client, message) => {
-    return client.extraFunction.getLocalizedCommand(client, message, 'ban').info
-  },
+  info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'servermanage').ban.info,
   run: (client, message) => {
-    const local = client.extraFunction.getLocalizedCommand(client, message, 'ban')
+    const local = client.extraFunction.getLocalizedCommand(client, message, 'servermanage').ban
     if (!message.member.permissions.has('BAN_MEMBERS')) message.reply(local.cant_ban_others)
     else if (message.mentions.members.array().length === 0) client.commands.get('help').command(client, message, 'ban')
     else {
@@ -92,11 +86,9 @@ exports.ban = {
 }
 
 exports.kick = {
-  info: (client, message) => {
-    return client.extraFunction.getLocalizedCommand(client, message, 'kick').info
-  },
+  info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'servermanage').kick.info,
   run: (client, message) => {
-    const local = client.extraFunction.getLocalizedCommand(client, message, 'kick')
+    const local = client.extraFunction.getLocalizedCommand(client, message, 'servermanage').kick
     if (!message.member.permissions.has('KICK_MEMBERS') &&!message.member.permissions.has('BAN_MEMBERS')) message.reply(local.cant_kick_others)
     else if (message.mentions.members.array().length === 0) client.commands.get('help').command(client, message, 'kick')
     else {
@@ -125,12 +117,10 @@ exports.kick = {
   }
 }
 exports.say = {
-  info: (client, message) => {
-    return client.extraFunction.getLocalizedCommand(client, message, 'say').info
-  },
+  info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'servermanage').say.info,
 
   run: (client, message) => {
-    let local = client.extraFunction.getLocalizedCommand(client, message, 'say')
+    let local = client.extraFunction.getLocalizedCommand(client, message, 'servermanange').say
     let say = message.content.replace(
       client.extraFunction.getPrefix(client, message) + 'say ',
       ''

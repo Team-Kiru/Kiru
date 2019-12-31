@@ -1,0 +1,67 @@
+{
+	"roll": {
+		"info": {
+			"name": "Roll",
+			"author": "Kio",
+			"category": "Fun",
+			"description": "Roll a [d]!",
+			"syntax": "roll\n#d - number of dice\nd# - highest face (can also be %)\nb# - highest number(s) (optional)\nexample - d6, 4d8b2, 5d20+4, 2d20+d6"
+		}
+	},
+	"mimic": {
+		"info": {
+			"name": "Mimic",
+			"author": "Kio",
+			"category": "Fun",
+			"description": "Let me be your personal Mimic!",
+			"syntax": "mimic help"
+		},
+		"help": {
+	          "description": "This is super cool - I get to help out other people! Let's go and take a peek at some of the commands I have, 'kay?",
+	          "color": 16098851,
+	          "author": {
+	            "name": "Oh, I'd love to help you be your character! >3<"
+	          },
+	          "fields": [
+	            {
+	              "name":  "create PREFIX, NAME, URL",
+	              "value": "This'll register your character in my collection of mimicry! OoOoo.\nExample: mimic create ]] Erki https://i.imgur.com/Hermeke.jpg",
+	              "inline": true
+	            },
+	            {
+	              "name": "edit PREFIX, NAME, URL",
+	              "value": "This'll edit what I know about the character. Sometimes, Characters are wrong!\nExample: mimic edit ]] Erki https://i.imgur.com/3Po2Xm8.jpg",
+	              "inline": true
+	            },
+	            {
+	              "name": "delete PREFIX",
+	              "value": "I'll forget the character. :c\nExample: mimic delete ]]",
+	              "inline": true
+	            },
+	            {
+	              "name": "list",
+	              "value": "I'll tell you about the characters you own!",
+	              "inline": true
+	            },
+	            {
+	              "name": "To actually make me mimic...",
+	              "value": "Use that prefix you gave me earlier, then the message.\nFor example, with Erki: ]]Hi, I'm Erki!",
+	              "inline": true
+	            }
+	          ]
+	        },
+
+	    "edit": {
+	    	"notspec": {
+	            "title": "Heya! I can help you edit a character, no worries!",
+	            "description": "You just need to select what *part*. the `name`, `prefix`, or `image`.",
+	            "color": 8311585
+	    	},
+	    	"invalid": {
+	              "title": "That's not a valid option!",
+	              "description": "You need to select the `name`, `prefix`, or `image`.",
+	              "color": 8311585
+	            }
+		}
+	}
+}
