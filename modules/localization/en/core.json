@@ -1,0 +1,66 @@
+{
+	"help": {
+		"not_how_to_use": "That's not the right way to use {command}!",
+		"author": "Author",
+		"syntax": "Syntax",
+		"footer": "For {username}! <3",
+		"not_a_command": ":x: that's not a command... :c",
+		"help_top": "Here's my help!",
+		"info": {
+			"name": "Help",
+			"category": "General",
+			"author": "Team Kiru",
+			"description": "Gives you some help, when you need it, of course!",
+			"syntax": "help [command]"
+		}
+	},
+
+	"settings": {
+		"info" : {
+			"name": "Settingss",
+			"author": "Team Kiru",
+			"category": "Miscellanious",
+			"description": "Change the Server-specific settings!",
+			"syntax": "settings help"
+		},
+		"no_command_title": "Let's get you some settings!",
+		"no_command_description": "These settings are unique for your server!",
+		"footer_title": "For {user}! <3",
+		"prefix_content": "Use this subcommand to change my prefix. use 'revert' to use the original one.",
+		"onjoin_content": "Want Kiru to welcome new members into the server? Or give a new role? This is the place!",
+		"onleave_content": "Want Kiru to make a comment when people leave? Use this!",
+		"revert": "The prefix has been reverted!",
+		"update": "Successfully updated!",
+		"cant_change_settings": "I can't let you modify my settings here. Maybe in your server!"
+	},
+	"about": {
+		"info": {
+			"name": "About",
+			"category": "General",
+			"author": "Team Kiru",
+			"description": "About Kiru!",
+			"syntax": "about"
+		},
+			"aboutBot": "About {bot.name}!",
+			"translate": false,
+			"greetingFromLead": "Hi! This is the Lead Developer of Kiru!",
+			"leadSpeaking": "We've been working hard to bring you this new bot.\nHopefully, you'll enjoy it just as much as we love it!",
+			"developers": "Developers",
+			"contentMakers": "Content-Makers (Because they need love too!)",
+			"version": "What're we using?",
+			"versionText": "Discord.js v. 11.4.2\nNode.js     v.{version}\nKiru! We have our own repo.\nDebian or Ubuntu. (I can't remember.)",
+			"specialThanks": "Special thanks to...",
+			"specialThanksUnder": "You, of course!\nThanks for using {bot.name}.\nMay the most adorable\nbot be the only one!"
+	},
+	"ping": {
+		"info": {
+			"name": "Ping",
+			"author": "Kio",
+			"category": "Miscellanious",
+			"description": "Ping! Get a rough estimate of the message delivery. Pong.",
+			"syntax": "ping"
+		},
+		"retrieve_ping": "Getting you a ping time...",
+		"time": "Pong!\nTime taken: "
+		}
+}

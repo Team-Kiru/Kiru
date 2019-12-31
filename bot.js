@@ -12,10 +12,7 @@ process.on('uncaughtException', err => {
 const client = new discord.Client()
 client.data = new ConfigGrab(path.join(__dirname, './config/data.json'))
 client.params = new ConfigGrab(path.join(__dirname, './config/config.json'))
-client.extraFunction = require(path.join(
-  __dirname,
-  './events/extrafunctions.js'
-))
+client.extraFunction = require(path.join(__dirname, './events/extrafunctions.js'))
 client.log = message => {
   client.channels.get(client.params.get('channels.genericLogs')).send(message)
   console.log(message)
@@ -108,9 +105,8 @@ client.on('ready', () => {
   client.log(
     `Logged in as ${client.user.tag} on ` + new Date().toUTCString() + '!'
   )
-  if (!fs.existsSync(path.join(__dirname, './commands/core.js'))) {
-    console.log(
-      '===================================================\n' +
+  if (!fs.existsSync(path.join(__dirname, './modules/core.js'))) {
+    console.log('===================================================\n' +
                 'WARNING!\nThis version of Kiru will be unsupported by Team Kiru!\n' +
                 'Core.js is required for proper operation.\n' +
                 '==================================================='

@@ -1,0 +1,38 @@
+{
+	"ban": {
+		"info": {
+			"name": "Bannen",
+			"author": "Kio",
+			"category": "Admin",
+			"description": "Verwende diesen Befehl, um andere zu bannen!",
+			"syntax": "banne <@user> [@anotherUser] (Kann mehrmals verwendet werden.)"
+		},
+		"cant_ban_others": "Du solltest niemanden bannen! ><",
+		"cant_ban_self": "Ich bann dich doch nicht, du Dummie!",
+		"cant_ban_kiru": "Mich zu benutzen, um mich selbst zu bannen, ist nicht nett!",
+		"cant_ban_owner": "Du kannst dich den Besitzer des Servers bannen!",
+		"cant_ban_higher_than_kiru": "Ich kann nicht {username} bannen, weil er oder sie h�her als ich in der Hierarchie ist.",
+		"cant_ban_higher_than_user": "Ich kann nicht {username} bannen, weil er oder sie h�her als du in der Hierarchie ist.",
+		"banedmembers": "Ich habe erfolgreich {amount} Benutzer gebannt. Das ist eine Menge... >~<",
+		"banedOne": "Ich habe erfolgreich {user} gebannt. Tsch�ss!",
+		"banedNone": "Ich konnte niemanden bannen. Schade aber!"
+	},
+	"kick": {
+		"info": {
+			"name": "Kicken",
+			"author": "Kio",
+			"category": "Admin",
+			"description": "Verwende diesen Befehl, um andere zu kicken!",
+			"syntax": "kicke <@user> [@anotherUser] (Kann mehrmals verwendet werden.)"
+		},
+		"cant_kick_others": "Du solltest niemanden kicken! ><",
+		"cant_kick_self": "Ich kick' doch nicht dich, Dummie!",
+		"cant_kick_kiru": "Mich zu benutzen, um mich selbst zu kicken, ist nicht nett!",
+		"cant_kick_owner": "Du kannst nicht den Besitzer des Servers kicken!",
+		"cant_kick_higher_than_kiru": "Ich kann nicht {username} kicken, weil er oder sie h�her als ich in der Hierarchie ist.",
+		"cant_kick_higher_than_user": "Ich kann nicht {username} kicken, weil er oder sie h�her als du in der Hierarchie ist.",
+		"kickedmembers": "Ich habe erfolgreich {amount} Benutzer gekickt. Das ist eine Menge... >~<",
+		"kickedOne": "Ich habe erfolgreich {user} gekickt. Tsch�ss!",
+		"kickedNone": "Ich konnte niemanden kicken. Schade aber!"
+	}
+}
