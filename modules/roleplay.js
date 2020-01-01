@@ -1,6 +1,10 @@
 const checkPhoto = photo => (photo === undefined || (!photo.startsWith('http://') && !photo.startsWith('https://') && ['.png', '.jpg', '.bmp'].includes(photo)))
 
 exports.roll = {
+  info: (client, message) => { return {}}
+}
+
+exports.roll = {
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'roleplay').roll.info,
   run: (client, message) => {
     const diceRoll = message.content.replace(client.extraFunction.getPrefix(client, message) + 'roll ', '')
@@ -131,15 +135,11 @@ exports.mimic = {
       case 'delete':
         if (argument.length === 2) {
           // Check Prefix to see if it exists with the user
-          if (
-            !Object.keys(
-              chars.get(message.guild.id + '.' + message.author.id)
-            ).includes(argument[1])
-          ) {
+          if (!Object.keys(chars.get(message.guild.id + '.' + message.author.id)).includes(Buffer.from(argument[1]).toString('Base64'))) {
             message.reply("I don't know anyone by that prefix!")
           } else {
           // Annnnd Delete.
-            chars.put(message.guild.id + '.' + message.author.id + '.' + argument[1].toString('base64'), undefined)
+            chars.put(message.guild.id + '.' + message.author.id + '.' + Buffer.from(argument[1]).toString('base64'), undefined)
             chars.save()
             message.reply('Up. I already forgot about... uhm.. who was it? I forgot.')
           }
