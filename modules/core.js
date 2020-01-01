@@ -96,16 +96,14 @@ exports.settings = {
     } else message.reply(local.cant_change_settings)
   }
 }
-
+/* Sorry to those who can't read english yet... ugh. Kiru just isn't ready for that. Need more localized files to be ready.
 exports.language = {
-  info: (client, message) => {
-    return {
-      hidden: true
-    }
-  },
+  info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'core').language.info,
 
-  run: (client, message, args) => {
-    let localization = JSON.parse(require('fs').readFileSync('./commands/localization/generic.json','utf8'))
+  run: (client, message) => {
+    let args = message.content.replace(client.extraFunction.getPrefix(client, message) + "language", "").trim().split(" ").filter(Boolean)
+    console.log(args)
+    let localization = JSON.parse(require('fs').readFileSync('./modules/localization/generic.json','utf8'))
     if (args.length === 0) {
       let msg = 'Hi there! Need a language change?'
       if (message.member.permissions.has('MANAGE_GUILD') || message.member.id === message.guild.ownerID) msg +="\nType ``server``, then the language code, to change the server's default language."
@@ -114,19 +112,19 @@ exports.language = {
       msg += '\n' + localization.languages[lang].replace('{prefix}', client.extraFunction.getPrefix(client, message))})
       message.channel.send(msg)
     } else {
-      if (args[0] === 'server') {
-        client.data.put('serverSpecificSettings.' + message.author.id + '.language', args[1])
+      if (args[0].toLowerCase() === 'server') {
+        client.data.put('serverSpecificSettings.' + message.guild.id + '.language', args[1].toLowerCase())
         client.data.save()
         message.reply(client.extraFunction.getLocalizedCommand(client, message,'language')['ok'])
-      } else if (Object.keys(localization.languages).includes(args[0])) {
-        client.data.put('userSpecificSettings.' + message.author.id + '.language',args[0])
+      } else if (Object.keys(localization.languages).includes(args[0].toLowerCase())) {
+        client.data.put('userSpecificSettings.' + message.author.id + '.language',args[0].toLowerCase())
         client.data.save()
         message.reply(client.extraFunction.getLocalizedCommand(client, message,'language')['ok'])
       } else message.reply("That's not a proper language. :c")
     }
   }
 }
-
+*/
 exports.about = {
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'core').about.info,
   run: (client, message) => {

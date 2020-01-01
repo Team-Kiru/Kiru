@@ -1,4 +1,15 @@
 {
+	"language": {
+		"info": {
+			"name": "Language",
+			"category": "Admin",
+			"author": "Team Kiru",
+			"category": "Admin",
+			"description": "Get Kiru in a more local language!",
+			"syntax": "language",
+			"hidden": true
+		}
+	},
 	"help": {
 		"not_how_to_use": "That's not the right way to use {command}!",
 		"author": "Author",

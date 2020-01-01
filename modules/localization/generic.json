@@ -1,7 +1,0 @@
-{
-	"languages": {
-		"en": "Hi, I'm Kiru! type ``{prefix}language en`` to set your language to **english**!",
-		"fr": "Bonjour, je suis Kiru! tapez `` {prefix}language fr`` pour définir votre langue en **français**!",
-		"de": "Hi, ich bin Kiru! gib ``{prefix}language de`` ein, um deine Sprache auf **deutsch** zu setzen!"
-	}
-}

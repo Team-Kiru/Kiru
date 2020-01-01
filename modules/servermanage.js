@@ -6,9 +6,11 @@ exports.stalk = {
     else {
       let member = message.mentions.members.array()[0], RoleList = null
       member.roles.array().forEach(role => {
-        if (RoleList === null) RoleList = '<@&' + role.id + '>'
+        if (role.name === '@everyone') {}
+        else if (RoleList === null) RoleList = '<@&' + role.id + '>'
         else RoleList += ', <@&' + role.id + '>'
       })
+      if (RoleList === null) RoleList = "...\*chirp\*, \*chirp\*...."
       const embed = {
         title: local.title.replace('{user}', member.user.username),
         color: 8242229,
