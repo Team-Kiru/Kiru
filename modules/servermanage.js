@@ -122,7 +122,7 @@ exports.say = {
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'servermanage').say.info,
 
   run: (client, message) => {
-    let local = client.extraFunction.getLocalizedCommand(client, message, 'servermanange').say
+    let local = client.extraFunction.getLocalizedCommand(client, message, 'servermanage').say
     let say = message.content.replace(
       client.extraFunction.getPrefix(client, message) + 'say ',
       ''
