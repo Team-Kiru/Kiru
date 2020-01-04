@@ -52,6 +52,7 @@
 			"description": "About Kiru!",
 			"syntax": "about"
 		},
+		"command": {
 			"aboutBot": "About {bot.name}!",
 			"translate": false,
 			"greetingFromLead": "Hi! This is the Lead Developer of Kiru!",
@@ -62,6 +63,7 @@
 			"versionText": "Discord.js v. 11.4.2\nNode.js     v.{version}\nKiru! We have our own repo.\nDebian or Ubuntu. (I can't remember.)",
 			"specialThanks": "Special thanks to...",
 			"specialThanksUnder": "You, of course!\nThanks for using {bot.name}.\nMay the most adorable\nbot be the only one!"
+		}
 	},
 	"ping": {
 		"info": {
