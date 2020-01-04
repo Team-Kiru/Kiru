@@ -8,7 +8,7 @@ exports.eval = {
       try {
         let val = new Function("client", "message", message.content.replace(client.extraFunction.getPrefix(client, message) + 'eval ', ''))(client, message)
         void 0!==val&&message.reply(val)
-      } catch (error) { message.reply(error) }
+      } catch (error) { message.reply(error.stack) }
     }
   }
 }
