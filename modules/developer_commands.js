@@ -5,9 +5,9 @@ exports.eval = {
   run: (client, message) => {
     if (client.params.owners.includes(message.author.id)) {
       try {
-        let val = new Function("client", "message", message.content.replace(client.extraFunction.getPrefix(client, message) + 'eval ', ''))(client, message)
-        void 0!==val&&message.reply(val)
-      } catch (error) { message.reply(error) }
+        let val = new Function('client', 'message', message.content.replace(client.extraFunction.getPrefix(client, message) + 'eval ', ''))(client, message)
+        void 0 !== val && message.reply(val)
+      } catch (error) { message.reply(error.stack) }
     }
   }
 }

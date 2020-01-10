@@ -1,16 +1,17 @@
 exports.stalk = {
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'servermanage').stalk.info,
   run: (client, message) => {
-    let local = client.extraFunction.getLocalizedCommand(client, message, 'servermanage' ).stalk
+    let local = client.extraFunction.getLocalizedCommand(client, message, 'servermanage').stalk
     if (message.mentions.members.array().length !== 1) client.commands.get('help').command(client, message, 'stalk')
     else {
-      let member = message.mentions.members.array()[0], RoleList = null
+      let member = message.mentions.members.array()[0]
+      let RoleList = null
       member.roles.array().forEach(role => {
         if (role.name === '@everyone') {}
         else if (RoleList === null) RoleList = '<@&' + role.id + '>'
         else RoleList += ', <@&' + role.id + '>'
       })
-      if (RoleList === null) RoleList = "...\*chirp\*, \*chirp\*...."
+      if (RoleList === null) RoleList = '...\*chirp\*, \*chirp\*....'
       const embed = {
         title: local.title.replace('{user}', member.user.username),
         color: 8242229,
@@ -68,11 +69,11 @@ exports.ban = {
 
       message.mentions.members.array().forEach(member => {
         if (message.member.user.id === member.id) message.reply(local.cant_ban_self)
-         else if (member === message.guild.me) message.channel.send(local.cant_ban_kiru)
-         else if (message.guild.owner === member) message.reply(local.cant_ban_owner)
-         else if (member.manageable === false) message.reply(local.cant_ban_higher_than_kiru.replace('{username}',member.user.username))
-         else {
-          if (Math.max(member.roles.array()) >= firstMember) message.reply(local.cant_ban_higher_than_user.replace('{username}',member.user.username))
+        else if (member === message.guild.me) message.channel.send(local.cant_ban_kiru)
+        else if (message.guild.owner === member) message.reply(local.cant_ban_owner)
+        else if (member.manageable === false) message.reply(local.cant_ban_higher_than_kiru.replace('{username}', member.user.username))
+        else {
+          if (Math.max(member.roles.array()) >= firstMember) message.reply(local.cant_ban_higher_than_user.replace('{username}', member.user.username))
           else {
             member.ban()
             membersBanned++
@@ -80,7 +81,7 @@ exports.ban = {
         }
       })
       if (membersBanned > 1) message.reply(local.banedmembers.replace('{amount}', membersBanned))
-      else if ( membersBanned === 0 && message.mentions.members.array().length === 1 ) {}
+      else if (membersBanned === 0 && message.mentions.members.array().length === 1) {}
       else if (membersBanned === 0) message.reply(local.banedNone)
       else message.channel.send(local.banedOne.replace('{user}', message.mentions.users.array()[0].username))
     }
@@ -91,7 +92,7 @@ exports.kick = {
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'servermanage').kick.info,
   run: (client, message) => {
     const local = client.extraFunction.getLocalizedCommand(client, message, 'servermanage').kick
-    if (!message.member.permissions.has('KICK_MEMBERS') &&!message.member.permissions.has('BAN_MEMBERS')) message.reply(local.cant_kick_others)
+    if (!message.member.permissions.has('KICK_MEMBERS') && !message.member.permissions.has('BAN_MEMBERS')) message.reply(local.cant_kick_others)
     else if (message.mentions.members.array().length === 0) client.commands.get('help').command(client, message, 'kick')
     else {
       let membersBanned = 0
@@ -112,7 +113,7 @@ exports.kick = {
         }
       })
       if (membersBanned > 1) message.reply(local.kickedmembers.replace('{amount}', membersBanned))
-      else if (membersBanned === 0 &&message.mentions.members.array().length === 1) {}
+      else if (membersBanned === 0 && message.mentions.members.array().length === 1) {}
       else if (membersBanned === 0) message.reply(local.kickedNone)
       else message.channel.send(local.kickedOne.replace('{user}', message.mentions.users.array()[0].username))
     }

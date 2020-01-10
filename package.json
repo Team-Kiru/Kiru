@@ -7,18 +7,13 @@
 		"discord.js": "^11.5.1",
 		"discord.js-lavalink": "^2.2.3",
 		"enmap": "^5.2.0",
-		"node-cron": "^2.0.3",
 		"node-fetch": "^2.6.0",
 		"node-json-config": "^0.0.5",
 		"opusscript": "^0.0.7",
-		"roll": "^1.2.0",
 		"stream-buffers": "^3.0.2"
 	},
 	"devDependencies": {
 		"standard": "^12.0.1"
-	},
-	"scripts": {
-		"postinstall": "node setup.js ready"
 	},
 	"author": "Kio",
 	"license": "ISC",
