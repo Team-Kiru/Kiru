@@ -1,9 +1,12 @@
 console.log('Kiru is booting! One sec~')
 
-const ConfigGrab = require('node-json-config')
-const conf = new ConfigGrab('./config/config.json')
-const { ShardingManager } = require('discord.js')
-const manager = new ShardingManager('./bot.js', { token: conf.get('token') })
+// Require config.json. Require can (and needs to be) synchronus in this case.
+const conf = require('./config/config.json')
 
-manager.spawn()
-manager.on('launch', shard => console.log(`Launched shard ${shard.id}`))
+// Load D.js's Sharding Manager, and load the token into it, as required by the config.
+const { ShardingManager } = require('discord.js')
+const shardManager = new ShardingManager('./bot.js', { token: conf['token'] })
+
+// Spawn shards.
+shardManager.spawn()
+shardManager.on('launch', shard => console.log(`Launched shard ${shard.id}`))

@@ -1,28 +1,29 @@
-const checkPhoto = photo => (photo === undefined || (!photo.startsWith('http://') && !photo.startsWith('https://') && ['.png', '.jpg', '.bmp'].includes(photo)))
-
-exports.roll = {
-  info: (client, message) => { return {}}
-}
+//  const checkPhoto = photo => (photo === undefined || (!photo.startsWith('http://') && !photo.startsWith('https://') && ['.png', '.jpg', '.bmp'].includes(photo)))
 
 exports.roll = {
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'roleplay').roll.info,
   run: (client, message) => {
     const diceRoll = message.content.replace(client.extraFunction.getPrefix(client, message) + 'roll ', '')
-  Parsed = diceRoll.trim().split("d")
-  let newarray = [], total = [], totalnum = 0
-  Parsed.forEach(itm => newarray.push(Number(itm.trim())))
-  if (newarray[0] === 0 ) newarray[0] = 1
-  if (newarray[0] >= 101) {message.reply("Don't be mean to me!"); return false;}
-  else if (newarray[1] >= 1001) {message.reply("Don't be mean to me!"); return false;}
-  for ( i = 0; i < newarray[0]; i++) {
-    q = Math.floor( Math.random() * newarray[1] ) + 1
-    if (newarray[0] !== 1) total.push(q)
-    totalnum += q
-  }
-  if (newarray[0] === 1) message.channel.send("**Your Total** " + totalnum) 
-  else message.channel.send("**Your Total:** "+totalnum+"\nYou got the following numbers,\n"+JSON.stringify(total))
+    let newarray = []
+    let total = []
+    let totalnum = 0
+    diceRoll.trim().split('d').forEach(itm => newarray.push(Number(itm.trim())))
+    if (newarray[0] === 0) newarray[0] = 1
+    if (newarray[0] >= 101) { message.reply('Don\'t be mean to me!'); return false }
+    else if (newarray[1] >= 1001) { message.reply('Don\'t be mean to me!'); return false }
+    let i, q
+    for (i = 0; i < newarray[0]; i++) {
+      q = Math.floor(Math.random() * newarray[1]) + 1
+      if (newarray[0] !== 1) total.push(q)
+      totalnum += q
+    }
+    if (newarray[0] === 1) message.channel.send('**Your Total** ' + totalnum)
+    else message.channel.send('**Your Total:** ' + totalnum + '\nYou got the following numbers,\n' + JSON.stringify(total))
   }
 }
+/* Deciding whether or not Mimic should exist.
+ It poses a big issue regarding custom prefixes, server prefixes, and the entirety of it all.
+ I might make it a seperate module for others to install and tinker with, but as far as I can tell, this shit isn't really the _best_ to use.
 
 exports.mimic = {
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'roleplay').mimic.info,
@@ -92,7 +93,7 @@ exports.mimic = {
               message.reply('I already have ' + chars.get(message.guild.id + '.' + message.author.id + '.' + argument[3] + '.username') + ' being mimicked with that prefix!')
               return
             }
-            if (argument[3] === client.params.get('prefix')) {
+            if (argument[3] === client.params.prefix) {
               message.reply("Sorry, that's my prefix. :c")
               return
             }
@@ -107,7 +108,7 @@ exports.mimic = {
                         TODO:
                             1. Check name for identical names (report if neccessary)
                             2. change
-            */
+            
             break
 
           case 'image':
@@ -191,3 +192,4 @@ exports.mimic = {
     }
   }
 }
+*/

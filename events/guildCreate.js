@@ -1,9 +1,6 @@
 module.exports = (client, guild) => {
-if (client.function['guildCreate'] !== undefined) client.function['guildCreate'].forEach(fun => {
-    fun(client, guild)
-  })
+  if (client.function['guildCreate'] !== undefined) client.function['guildCreate'].forEach(fun => fun(client, guild))
 
-  console.log(guild)
   const embed = {
     title: 'New Server!',
     color: 7320862,
@@ -29,7 +26,5 @@ if (client.function['guildCreate'] !== undefined) client.function['guildCreate']
       }
     ]
   }
-  client.channels
-    .get(client.params.get('channels.guildReporter'))
-    .send({ embed })
+  client.channels.get(client.params.logs.guildReporter).send({ embed })
 }

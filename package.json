@@ -18,7 +18,7 @@
 		"standard": "^12.0.1"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"postinstall": "node setup.js ready"
 	},
 	"author": "Kio",
 	"license": "ISC",

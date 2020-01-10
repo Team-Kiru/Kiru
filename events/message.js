@@ -18,10 +18,9 @@ module.exports = (client, message) => {
   const cmd = client.commands.get(command)
   if (!cmd) return
   client.timeInvoked = Date.now()
-  try {cmd.run(client, message)}
+  try { cmd.run(client, message) }
   catch (exception) {
-    client.channels.get(client.params.get('channels.genericLogs')).send("@here There's an issue with one of your plugins.\n" + exception.stack)
-    console.log(exception.stack)
+    client.log("@here There's an issue with one of your plugins.\n" + exception.stack)
     message.reply("I.. I did something naughty, and an error occured.\nI-I'll b-be a good boy, and report the e-error though!")
   }
 }

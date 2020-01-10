@@ -6,48 +6,22 @@ exports.settings = {
   On_guildMemberJoin: (client, member) => {
     const welcomeBlock = client.data.get('serverSpecificSettings.' + member.guild.id + '.welcome')
     if (welcomeBlock !== undefined) {
-      if (
-        welcomeBlock.channel !== undefined &&
-          welcomeBlock.message !== undefined
-      ) {
-        client.channels
-          .get(welcomeBlock.channel)
-          .send(
-            welcomeBlock.message.replace(
-              /{mention}/gm,
-              '<@' + member.id + '>'
-            )
-          )
-      }
+      if (welcomeBlock.channel !== undefined && welcomeBlock.message !== undefined) client.channels.get(welcomeBlock.channel).send(welcomeBlock.message.replace(/{mention}/gm, '<@' + member.id + '>'))
       if (welcomeBlock.role) {
         // TODO: Just really need to add the role.
       }
     }
   },
   On_guildMemberRemove: (client, member) => {
-    const welcomeBlock = client.data.get(
-      'serverSpecificSettings.' + member.guild.id + '.goodbye'
-    )
+    const welcomeBlock = client.data.get('serverSpecificSettings.' + member.guild.id + '.goodbye')
     if (welcomeBlock !== undefined) {
-      if (
-        welcomeBlock.channel !== undefined &&
-          welcomeBlock.message !== undefined
-      ) {
-        client.channels
-          .get(welcomeBlock.channel)
-          .send(
-            welcomeBlock.message.replace(
-              /{mention}/gm,
-              '@' + member.user.username + '#' + member.user.tag
-            )
-          )
-      }
+      if (welcomeBlock.channel !== undefined && welcomeBlock.message !== undefined) client.channels.get(welcomeBlock.channel).send(welcomeBlock.message.replace(/{mention}/gm,'@' + member.user.username + '#' + member.user.tag))
     }
   },
   info: (client, message) => client.extraFunction.getLocalizedCommand(client, message, 'core').settings.info,
   run: (client, message) => {
     const local = client.extraFunction.getLocalizedCommand(client, message, 'core').settings
-    const args = message.content.replace(client.extraFunction.getPrefix(client, message) + 'settings','').trim().split(' ')
+    const args = message.content.replace(client.extraFunction.getPrefix(client, message) + 'settings', '').trim().split(' ')
     if (message.member.permissions.has('MANAGE_GUILD')) {
       if (args.length === 0 || args[0].toLowerCase() === 'help' || args[0] === '') {
         const embed = {
@@ -59,7 +33,7 @@ exports.settings = {
           },
           fields: [
             {
-              name: "Prefix",
+              name: 'Prefix',
               value: local.prefix_content
             },
             {
@@ -74,25 +48,25 @@ exports.settings = {
         }
         message.channel.send({ embed })
       } else switch (args[0].toLowerCase()) {
-          case local.prefix:
-            if (args[1] === undefined) return
-            else if (args[1].toLowerCase() === 'revert') {
-              client.data.put('serverSpecificSettings.' + message.guild.id + '.prefix', undefined)
-              client.data.save()
-              message.reply(local.revert)
-            } else {
-              client.data.put('serverSpecificSettings.' + message.guild.id + '.prefix', args[1] )
-              client.data.save()
-              message.reply(local.update)
-            }
-            break
-          case 'onleave':
-            onMember(client, message, args, 'leave', local)
-            break
-          case 'onjoin':
-            onMember(client, message, args, 'join', local)
-            break
+        case local.prefix:
+          if (args[1] === undefined) return false
+          else if (args[1].toLowerCase() === 'revert') {
+            client.data.put('serverSpecificSettings.' + message.guild.id + '.prefix', undefined)
+            client.data.save()
+            message.reply(local.revert)
+          } else {
+            client.data.put('serverSpecificSettings.' + message.guild.id + '.prefix', args[1])
+            client.data.save()
+            message.reply(local.update)
           }
+          break
+        case 'onleave':
+          onMember(client, message, args, 'leave', local)
+          break
+        case 'onjoin':
+          onMember(client, message, args, 'join', local)
+          break
+      }
     } else message.reply(local.cant_change_settings)
   }
 }
@@ -130,10 +104,7 @@ exports.about = {
   run: (client, message) => {
     let local = client.extraFunction.getLocalizedCommand(client, message, 'core').about
     let embed = {
-      title: local.command.aboutBot.replace(
-        '{bot.name}',
-        client.params.get('aboutme.name')
-      ),
+      title: local.command.aboutBot.replace('{bot.name}', client.params.name),
       color: 4040592,
       timestamp: Date.now(),
       fields: [
@@ -152,12 +123,7 @@ exports.about = {
       ]
     }
 
-    if (local.command.translate === true) {
-      embed.fields.push({
-        name: local.command.translator,
-        value: local.command.translators
-      })
-    }
+    if (local.command.translate === true) embed.fields.push({ name: local.command.translator, value: local.command.translators })
 
     embed.fields.push({
       name: local.command.version,
@@ -166,7 +132,7 @@ exports.about = {
     })
     embed.fields.push({
       name: local.command.specialThanks,
-      value: local.command.specialThanksUnder.replace('{bot.name}', client.params.get('aboutme.name')),
+      value: local.command.specialThanksUnder.replace('{bot.name}', client.params.name),
       inline: true
     })
 
@@ -180,9 +146,7 @@ exports.ping = {
   run: (client, message) => {
     const local = client.extraFunction.getLocalizedCommand(client, message, 'core').ping
     const timeInvoked = client.timeInvoked
-    message.channel.send(local.retrieve_ping).then(mg => {
-      mg.edit(local.time + (Date.now() - timeInvoked) + 'ms')
-    })
+    message.channel.send(local.retrieve_ping).then(mg => mg.edit(local.time + (Date.now() - timeInvoked) + 'ms'))
   }
 }
 
@@ -196,7 +160,7 @@ exports.help = {
       fields: [
         {
           name: local.not_how_to_use.replace('{command}', command),
-          value: '```' +client.extraFunction.getPrefix(client, message) +x.syntax +'```'
+          value: '```' + client.extraFunction.getPrefix(client, message) + x.syntax + '```'
         }
       ]
     }
@@ -220,7 +184,7 @@ exports.help = {
         }
       })
 
-      Object.keys(commandList).forEach(key => {commandList[key] = commandList[key].sort()})
+      Object.keys(commandList).forEach(key => { commandList[key] = commandList[key].sort() })
       let embed = {
         title: local.help_top,
         color: 3797101,
@@ -231,7 +195,7 @@ exports.help = {
       }
       Object.keys(commandList).forEach(key => {
         let properDisplay = ''
-        commandList[key].forEach(item => {properDisplay += ' ``' + item + '``, '})
+        commandList[key].forEach(item => { properDisplay += ' ``' + item + '``, ' })
         properDisplay = properDisplay.substring(0, properDisplay.length - 2)
         let final = { name: key, value: properDisplay }
         embed['fields'].push(final)
@@ -250,9 +214,7 @@ exports.help = {
       const embed = {
         color: 3797101,
         footer: {
-          text: client.extraFunction
-            .getLocalizedCommand(client, message, 'core').help
-            .footer.replace('{username}', message.author.username)
+          text: client.extraFunction.getLocalizedCommand(client, message, 'core').help.footer.replace('{username}', message.author.username)
         },
         fields: [
           {
@@ -306,13 +268,11 @@ const onMember = (client, message, args, selector, lang) => {
       case 'channel':
         if (message.mentions.channels.array().length !== 1) {
           const embed = {
-            title: local.info.name,
+            title: lang.info.name,
             color: 13632027,
             fields: [
               {
-                name: client.extraFunction
-                  .getLocalizedCommand(client, message, 'core').help
-                  .not_how_to_use.replace('{command}', 'channel'),
+                name: client.extraFunction.getLocalizedCommand(client, message, 'core').help.not_how_to_use.replace('{command}', 'channel'),
                 value: '```' + client.extraFunction.getPrefix(client, message) + 'settings ' + select[0] + ' channel <channel>' + '```'
               }
             ]
@@ -339,11 +299,9 @@ const onMember = (client, message, args, selector, lang) => {
         break
       case 'validate':
         // Just use the code from events/guildmemberadd
-        const welcomeBlock = client.data.get(
-          'serverSpecificSettings.' + member.guild.id + '.' + select[1]
-        )
+        const welcomeBlock = client.data.get('serverSpecificSettings.' + message.member.guild.id + '.' + select[1])
         if (welcomeBlock !== undefined) {
-          if (welcomeBlock.channel !== undefined && welcomeBlock.message !== undefined) client.channels.get(welcomeBlock.channel).send(welcomeBlock.message.replace(/{mention}/gm,'<@' + message.guild.me.user.id + '>'))
+          if (welcomeBlock.channel !== undefined && welcomeBlock.message !== undefined) client.channels.get(welcomeBlock.channel).send(welcomeBlock.message.replace(/{mention}/gm, '<@' + message.guild.me.user.id + '>'))
           else message.reply("I can't really validate your message if I have nothing to.. y'know.")
         }
         break
