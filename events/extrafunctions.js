@@ -41,3 +41,7 @@ exports.getPrefix = (client, message) => {
     else return client.data.get('serverSpecificSettings.' + message.guild.id + '.prefix')
   } else return client.params.prefix
 }
+
+exports.parse = (client, message, string) => {
+
+}
